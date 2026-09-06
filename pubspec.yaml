@@ -1,7 +1,7 @@
 name: impasta
 description: "Pizza dough calculator with custom pans, presets, and multi-language support"
 publish_to: 'none'
-version: 0.1.5
+version: 0.1.6
 homepage: https://ttarner.github.io/impasta/
 repository: https://github.com/ttarner/impasta
 
