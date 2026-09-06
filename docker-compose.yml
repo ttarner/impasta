@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  frontend:
+    image: ghcr.io/ttarner/impasta:latest
+    build:
+      context: ./
+    ports:
+      - "9000:9000"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:9000/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

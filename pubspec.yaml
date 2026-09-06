@@ -1,0 +1,52 @@
+name: impasta
+description: "Pizza dough calculator with custom pans, presets, and multi-language support"
+publish_to: 'none'
+version: 0.1.5
+homepage: https://ttarner.github.io/impasta/
+repository: https://github.com/ttarner/impasta
+
+environment:
+  sdk: '>=3.3.4 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  google_fonts: ^6.2.1
+  image_picker: ^1.1.2
+  intl: ^0.19.0
+  path_provider: ^2.1.5
+  sembast: ^3.8.2
+  sembast_web: ^2.4.0+4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.14.3
+  flutter_native_splash: ^2.4.4
+
+flutter:
+  generate: true
+  uses-material-design: true
+  assets:
+  - assets/images/pizza.png
+  fonts:
+    - family: CreamCake
+      fonts:
+        - asset: custom_fonts/fonts/Cream-Cake.otf
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/pizza_icon_foreground.png"
+  adaptive_icon_background: "#1C1C1C"
+  adaptive_icon_foreground: "assets/images/pizza_icon_foreground.png"
+
+flutter_native_splash:
+  color: "#1C1C1C"
+  image: "assets/images/pizza_splash.png"
+  android: true
+  ios: false
+  web: false

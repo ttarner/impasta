@@ -1,0 +1,76 @@
+{
+  "@@locale": "it",
+
+  "appTitle": "Impasta",
+
+  "ingredients": "Ingredienti",
+  "flour": "Farina",
+  "water": "Acqua",
+  "yeast": "Lievito",
+  "yeastFresh": "Fresco",
+  "yeastDry": "Secco",
+  "yeastFullFresh": "Lievito Fresco",
+  "yeastFullDry": "Lievito Secco",
+  "salt": "Sale",
+  "oil": "Olio",
+  "doughBall": "Panetto",
+
+  "rectangular": "Rettangolare",
+  "circular": "Tonda",
+
+  "newPan": "Nuova teglia",
+  "widthCm": "Larghezza (cm)",
+  "heightCm": "Altezza (cm)",
+  "diameterCm": "Diametro (cm)",
+  "addPan": "Aggiungi teglia",
+  "resetPans": "Ripristina teglie di default",
+  "removePan": "Rimuovi teglia",
+  "removePanConfirm": "Rimuovere la teglia {description}?",
+  "@removePanConfirm": {
+    "placeholders": {
+      "description": { "type": "String" }
+    }
+  },
+
+  "add": "Aggiungi",
+  "cancel": "Annulla",
+  "save": "Salva",
+  "delete": "Elimina",
+  "edit": "Modifica",
+  "remove": "Rimuovi",
+
+  "longPressToRestore": "Tieni premuto per ripristinare",
+
+  "savedPresets": "Preset salvati",
+  "saved": "Salvati",
+  "saveCurrentParams": "Salva parametri correnti",
+  "presetName": "Nome",
+  "presetNotes": "Note (opzionale)",
+  "presetSaved": "Preset salvato",
+  "editPreset": "Modifica preset",
+  "deletePreset": "Elimina preset",
+  "deletePresetConfirm": "Eliminare \"{name}\"?",
+  "@deletePresetConfirm": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "presetDeleted": "\"{name}\" eliminato",
+  "@presetDeleted": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "noPresets": "Nessun preset salvato",
+  "noPresetsHint": "Premi l'icona salva per salvare\ni parametri correnti",
+
+  "takePhoto": "Scatta foto",
+  "pickFromGallery": "Scegli dalla galleria",
+
+  "dbError": "Errore DB: {error}",
+  "@dbError": {
+    "placeholders": {
+      "error": { "type": "String" }
+    }
+  }
+}

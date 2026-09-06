@@ -1,0 +1,253 @@
+name: Release
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+  pages: write
+  id-token: write
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  bump-version:
+    name: Bump patch version
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.bump.outputs.version }}
+      changelog: ${{ steps.changelog.outputs.commits }}
+    steps:
+      - uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate changelog before bump
+        id: changelog
+        run: |
+          PREV_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          if [ -z "$PREV_TAG" ]; then
+            COMMITS=$(git log --pretty=format:"- %s (%h)" -20)
+          else
+            COMMITS=$(git log --pretty=format:"- %s (%h)" "$PREV_TAG"..HEAD)
+          fi
+          {
+            echo "commits<<EOF"
+            echo "$COMMITS"
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
+
+      - name: Bump patch version in pubspec.yaml
+        id: bump
+        run: |
+          CURRENT=$(grep '^version:' pubspec.yaml | sed 's/version: //')
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT"
+          PATCH=$((PATCH + 1))
+          NEW_VERSION="$MAJOR.$MINOR.$PATCH"
+          sed -i "s/^version: .*/version: $NEW_VERSION/" pubspec.yaml
+          echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "Bumped $CURRENT -> $NEW_VERSION"
+
+      - name: Commit version bump
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add pubspec.yaml
+          git commit -m "Bump version to ${{ steps.bump.outputs.version }}"
+          git push
+
+  build-android:
+    name: Build Android APK
+    needs: bump-version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.2
+        with:
+          ref: main
+
+      - uses: actions/setup-java@v4.7.0
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.5'
+
+      - run: flutter pub get
+      - run: flutter build apk --release --android-skip-build-dependency-validation
+
+      - uses: actions/upload-artifact@v4.6.2
+        with:
+          name: android-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+
+  build-ios:
+    name: Build iOS IPA
+    needs: bump-version
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4.2.2
+        with:
+          ref: main
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.5'
+
+      - run: flutter pub get
+
+      - name: Build unsigned iOS app
+        run: |
+          flutter build ios --release --no-codesign --config-only
+          cd ios
+          xcodebuild archive \
+            -workspace Runner.xcworkspace \
+            -scheme Runner \
+            -configuration Release \
+            -archivePath ../build/ios/Runner.xcarchive \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            DEVELOPMENT_TEAM=""
+
+      - name: Create unsigned IPA
+        run: |
+          mkdir -p Payload
+          cp -r build/ios/Runner.xcarchive/Products/Applications/Runner.app Payload/
+          zip -r Impasta.ipa Payload
+
+      - uses: actions/upload-artifact@v4.6.2
+        with:
+          name: ios-ipa
+          path: Impasta.ipa
+
+  build-docker:
+    name: Build & push Docker image
+    needs: bump-version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.2
+        with:
+          ref: main
+
+      - uses: docker/login-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: docker/build-push-action@v5
+      - name: Extract metadata for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=raw,value=latest
+            type=raw,value=v${{ needs.bump-version.outputs.version }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_REPOSITORY }}:latest
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  deploy-pages:
+    name: Deploy to GitHub Pages
+    needs: bump-version
+    runs-on: ubuntu-latest
+    concurrency:
+      group: "pages"
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4.2.2
+        with:
+          ref: main
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.5'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build Web
+        run: |
+          REPO_NAME="${{ github.event.repository.name }}"
+          if [ -z "$REPO_NAME" ]; then
+            REPO_NAME="$(basename ${{ github.repository }})"
+          fi
+          flutter build web --release --base-href "/${REPO_NAME}/"
+          cp build/web/index.html build/web/404.html
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/web
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  release:
+    name: Create GitHub Release
+    needs: [bump-version, build-android, build-ios, build-docker]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.2
+        with:
+          ref: main
+
+      - uses: actions/download-artifact@v4.2.1
+        with:
+          name: android-apk
+          path: artifacts/android
+
+      - uses: actions/download-artifact@v4.2.1
+        with:
+          name: ios-ipa
+          path: artifacts/ios
+
+      - name: Rename artifacts
+        run: |
+          VERSION="${{ needs.bump-version.outputs.version }}"
+          mv artifacts/android/app-release.apk "artifacts/android/impasta-v${VERSION}-release.apk"
+          mv artifacts/ios/Impasta.ipa "artifacts/ios/Impasta-v${VERSION}-unsigned.ipa"
+
+      - uses: softprops/action-gh-release@v2.2.1
+        with:
+          tag_name: v${{ needs.bump-version.outputs.version }}
+          name: "Impasta v${{ needs.bump-version.outputs.version }}"
+          body: |
+            ## What's Changed
+            ${{ needs.bump-version.outputs.changelog }}
+
+            > **Note:** The iOS IPA is unsigned and cannot be installed directly on a device without an Apple Developer certificate.
+          files: |
+            artifacts/android/impasta-v${{ needs.bump-version.outputs.version }}-release.apk
+            artifacts/ios/Impasta-v${{ needs.bump-version.outputs.version }}-unsigned.ipa

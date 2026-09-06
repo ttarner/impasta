@@ -1,0 +1,76 @@
+{
+  "@@locale": "fr",
+
+  "appTitle": "Impasta",
+
+  "ingredients": "Ingrédients",
+  "flour": "Farine",
+  "water": "Eau",
+  "yeast": "Levure",
+  "yeastFresh": "Fraîche",
+  "yeastDry": "Sèche",
+  "yeastFullFresh": "Levure Fraîche",
+  "yeastFullDry": "Levure Sèche",
+  "salt": "Sel",
+  "oil": "Huile",
+  "doughBall": "Pâton",
+
+  "rectangular": "Rectangulaire",
+  "circular": "Ronde",
+
+  "newPan": "Nouveau plat",
+  "widthCm": "Largeur (cm)",
+  "heightCm": "Hauteur (cm)",
+  "diameterCm": "Diamètre (cm)",
+  "addPan": "Ajouter un plat",
+  "resetPans": "Restaurer les plats par défaut",
+  "removePan": "Retirer le plat",
+  "removePanConfirm": "Retirer le plat {description} ?",
+  "@removePanConfirm": {
+    "placeholders": {
+      "description": { "type": "String" }
+    }
+  },
+
+  "add": "Ajouter",
+  "cancel": "Annuler",
+  "save": "Enregistrer",
+  "delete": "Supprimer",
+  "edit": "Modifier",
+  "remove": "Retirer",
+
+  "longPressToRestore": "Appui long pour restaurer",
+
+  "savedPresets": "Presets enregistrés",
+  "saved": "Enregistrés",
+  "saveCurrentParams": "Enregistrer les paramètres actuels",
+  "presetName": "Nom",
+  "presetNotes": "Notes (facultatif)",
+  "presetSaved": "Preset enregistré",
+  "editPreset": "Modifier le preset",
+  "deletePreset": "Supprimer le preset",
+  "deletePresetConfirm": "Supprimer \"{name}\" ?",
+  "@deletePresetConfirm": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "presetDeleted": "\"{name}\" supprimé",
+  "@presetDeleted": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "noPresets": "Aucun preset enregistré",
+  "noPresetsHint": "Appuyez sur l'icône enregistrer pour sauvegarder\nles paramètres actuels",
+
+  "takePhoto": "Prendre une photo",
+  "pickFromGallery": "Choisir dans la galerie",
+
+  "dbError": "Erreur DB : {error}",
+  "@dbError": {
+    "placeholders": {
+      "error": { "type": "String" }
+    }
+  }
+}

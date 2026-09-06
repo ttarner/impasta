@@ -1,0 +1,45 @@
+:9000 {
+	root * /srv
+
+	# Gzip & Brotli compression
+	encode gzip zstd
+
+	# Security headers
+	header {
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		X-XSS-Protection "1; mode=block"
+		-Server
+	}
+
+	# Block common scan paths
+	@scanners {
+		path /.env /.git/* /wp-login* /wp-admin* /phpmyadmin* /cgi-bin/*
+		path /vendor/* /phpunit/* /admin/config.php /goform/* /boaform/*
+		path /sdk /SDK/* /GponForm/* /HNAP1/*
+	}
+	respond @scanners 403
+
+	# Block non-GET/HEAD methods
+	@blocked_methods {
+		not method GET HEAD OPTIONS
+	}
+	respond @blocked_methods 405
+
+	# Cache static assets
+	@static {
+		path *.js *.css *.png *.jpg *.jpeg *.gif *.ico *.woff *.woff2 *.otf *.json
+	}
+	header @static Cache-Control "public, max-age=604800"
+
+	# Rewrite root-level favicon/apple-touch-icon to /icons/
+	rewrite /favicon.ico /icons/favicon.ico
+	rewrite /favicon.png /icons/favicon-96x96.png
+	rewrite /apple-touch-icon.png /icons/apple-icon-180x180.png
+	rewrite /apple-touch-icon-precomposed.png /icons/apple-icon-precomposed.png
+
+	# Serve Flutter SPA
+	try_files {path} /index.html
+	file_server
+}

@@ -1,0 +1,56 @@
+{
+  "@@locale": "en",
+
+  "appTitle": "Impasta",
+
+  "ingredients": "Ingredients",
+  "flour": "Flour",
+  "water": "Water",
+  "yeast": "Yeast",
+  "yeastFresh": "Fresh",
+  "yeastDry": "Dry",
+  "yeastFullFresh": "Fresh Yeast",
+  "yeastFullDry": "Dry Yeast",
+  "salt": "Salt",
+  "oil": "Oil",
+  "doughBall": "Dough ball",
+
+  "rectangular": "Rectangular",
+  "circular": "Round",
+
+  "newPan": "New pan",
+  "widthCm": "Width (cm)",
+  "heightCm": "Height (cm)",
+  "diameterCm": "Diameter (cm)",
+  "addPan": "Add pan",
+  "resetPans": "Reset pans to default",
+  "removePan": "Remove pan",
+  "removePanConfirm": "Remove {description} pan?",
+
+  "add": "Add",
+  "cancel": "Cancel",
+  "save": "Save",
+  "delete": "Delete",
+  "edit": "Edit",
+  "remove": "Remove",
+
+  "longPressToRestore": "Long press to restore default",
+
+  "savedPresets": "Saved presets",
+  "saved": "Saved",
+  "saveCurrentParams": "Save current parameters",
+  "presetName": "Name",
+  "presetNotes": "Notes (optional)",
+  "presetSaved": "Preset saved",
+  "editPreset": "Edit preset",
+  "deletePreset": "Delete preset",
+  "deletePresetConfirm": "Delete \"{name}\"?",
+  "presetDeleted": "\"{name}\" deleted",
+  "noPresets": "No saved presets",
+  "noPresetsHint": "Tap the save icon to save\nyour current parameters",
+
+  "takePhoto": "Take photo",
+  "pickFromGallery": "Pick from gallery",
+
+  "dbError": "DB error: {error}"
+}

@@ -1,0 +1,76 @@
+{
+  "@@locale": "ja",
+
+  "appTitle": "Impasta",
+
+  "ingredients": "材料",
+  "flour": "小麦粉",
+  "water": "水",
+  "yeast": "酵母",
+  "yeastFresh": "生",
+  "yeastDry": "乾燥",
+  "yeastFullFresh": "生酵母",
+  "yeastFullDry": "乾燥酵母",
+  "salt": "塩",
+  "oil": "オイル",
+  "doughBall": "生地玉",
+
+  "rectangular": "長方形",
+  "circular": "丸型",
+
+  "newPan": "新しい天板",
+  "widthCm": "幅 (cm)",
+  "heightCm": "高さ (cm)",
+  "diameterCm": "直径 (cm)",
+  "addPan": "天板を追加",
+  "resetPans": "天板をデフォルトに戻す",
+  "removePan": "天板を削除",
+  "removePanConfirm": "{description}の天板を削除しますか？",
+  "@removePanConfirm": {
+    "placeholders": {
+      "description": { "type": "String" }
+    }
+  },
+
+  "add": "追加",
+  "cancel": "キャンセル",
+  "save": "保存",
+  "delete": "削除",
+  "edit": "編集",
+  "remove": "削除",
+
+  "longPressToRestore": "長押しでデフォルトに戻す",
+
+  "savedPresets": "保存済みプリセット",
+  "saved": "保存済み",
+  "saveCurrentParams": "現在のパラメータを保存",
+  "presetName": "名前",
+  "presetNotes": "メモ（任意）",
+  "presetSaved": "プリセットを保存しました",
+  "editPreset": "プリセットを編集",
+  "deletePreset": "プリセットを削除",
+  "deletePresetConfirm": "「{name}」を削除しますか？",
+  "@deletePresetConfirm": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "presetDeleted": "「{name}」を削除しました",
+  "@presetDeleted": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "noPresets": "保存済みプリセットなし",
+  "noPresetsHint": "保存アイコンをタップして\n現在のパラメータを保存",
+
+  "takePhoto": "写真を撮る",
+  "pickFromGallery": "ギャラリーから選択",
+
+  "dbError": "DBエラー: {error}",
+  "@dbError": {
+    "placeholders": {
+      "error": { "type": "String" }
+    }
+  }
+}

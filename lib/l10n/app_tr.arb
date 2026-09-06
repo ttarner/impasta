@@ -1,0 +1,76 @@
+{
+  "@@locale": "tr",
+
+  "appTitle": "Impasta",
+
+  "ingredients": "Malzemeler",
+  "flour": "Un",
+  "water": "Su",
+  "yeast": "Maya",
+  "yeastFresh": "Yaş",
+  "yeastDry": "Kuru",
+  "yeastFullFresh": "Yaş Maya",
+  "yeastFullDry": "Kuru Maya",
+  "salt": "Tuz",
+  "oil": "Yağ",
+  "doughBall": "Hamur topу",
+
+  "rectangular": "Dikdörtgen",
+  "circular": "Yuvarlak",
+
+  "newPan": "Yeni tepsi",
+  "widthCm": "Genişlik (cm)",
+  "heightCm": "Yükseklik (cm)",
+  "diameterCm": "Çap (cm)",
+  "addPan": "Tepsi ekle",
+  "resetPans": "Tepsileri varsayılana sıfırla",
+  "removePan": "Tepsiyi kaldır",
+  "removePanConfirm": "{description} tepsisi kaldırılsın mı?",
+  "@removePanConfirm": {
+    "placeholders": {
+      "description": { "type": "String" }
+    }
+  },
+
+  "add": "Ekle",
+  "cancel": "İptal",
+  "save": "Kaydet",
+  "delete": "Sil",
+  "edit": "Düzenle",
+  "remove": "Kaldır",
+
+  "longPressToRestore": "Varsayılana döndürmek için basılı tutun",
+
+  "savedPresets": "Kayıtlı ayarlar",
+  "saved": "Kayıtlı",
+  "saveCurrentParams": "Mevcut parametreleri kaydet",
+  "presetName": "Ad",
+  "presetNotes": "Notlar (isteğe bağlı)",
+  "presetSaved": "Ayar kaydedildi",
+  "editPreset": "Ayarı düzenle",
+  "deletePreset": "Ayarı sil",
+  "deletePresetConfirm": "\"{name}\" silinsin mi?",
+  "@deletePresetConfirm": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "presetDeleted": "\"{name}\" silindi",
+  "@presetDeleted": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "noPresets": "Kayıtlı ayar yok",
+  "noPresetsHint": "Mevcut parametreleri kaydetmek için\nkaydet simgesine dokunun",
+
+  "takePhoto": "Fotoğraf çek",
+  "pickFromGallery": "Galeriden seç",
+
+  "dbError": "DB hatası: {error}",
+  "@dbError": {
+    "placeholders": {
+      "error": { "type": "String" }
+    }
+  }
+}

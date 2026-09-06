@@ -1,0 +1,76 @@
+{
+  "@@locale": "pt",
+
+  "appTitle": "Impasta",
+
+  "ingredients": "Ingredientes",
+  "flour": "Farinha",
+  "water": "Água",
+  "yeast": "Fermento",
+  "yeastFresh": "Fresco",
+  "yeastDry": "Seco",
+  "yeastFullFresh": "Fermento Fresco",
+  "yeastFullDry": "Fermento Seco",
+  "salt": "Sal",
+  "oil": "Azeite",
+  "doughBall": "Bolinha",
+
+  "rectangular": "Retangular",
+  "circular": "Redonda",
+
+  "newPan": "Nova assadeira",
+  "widthCm": "Largura (cm)",
+  "heightCm": "Altura (cm)",
+  "diameterCm": "Diâmetro (cm)",
+  "addPan": "Adicionar assadeira",
+  "resetPans": "Restaurar assadeiras padrão",
+  "removePan": "Remover assadeira",
+  "removePanConfirm": "Remover a assadeira {description}?",
+  "@removePanConfirm": {
+    "placeholders": {
+      "description": { "type": "String" }
+    }
+  },
+
+  "add": "Adicionar",
+  "cancel": "Cancelar",
+  "save": "Salvar",
+  "delete": "Excluir",
+  "edit": "Editar",
+  "remove": "Remover",
+
+  "longPressToRestore": "Pressione e segure para restaurar",
+
+  "savedPresets": "Presets salvos",
+  "saved": "Salvos",
+  "saveCurrentParams": "Salvar parâmetros atuais",
+  "presetName": "Nome",
+  "presetNotes": "Notas (opcional)",
+  "presetSaved": "Preset salvo",
+  "editPreset": "Editar preset",
+  "deletePreset": "Excluir preset",
+  "deletePresetConfirm": "Excluir \"{name}\"?",
+  "@deletePresetConfirm": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "presetDeleted": "\"{name}\" excluído",
+  "@presetDeleted": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "noPresets": "Nenhum preset salvo",
+  "noPresetsHint": "Toque no ícone salvar para guardar\nos parâmetros atuais",
+
+  "takePhoto": "Tirar foto",
+  "pickFromGallery": "Escolher da galeria",
+
+  "dbError": "Erro DB: {error}",
+  "@dbError": {
+    "placeholders": {
+      "error": { "type": "String" }
+    }
+  }
+}

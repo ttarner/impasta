@@ -1,0 +1,76 @@
+{
+  "@@locale": "de",
+
+  "appTitle": "Impasta",
+
+  "ingredients": "Zutaten",
+  "flour": "Mehl",
+  "water": "Wasser",
+  "yeast": "Hefe",
+  "yeastFresh": "Frisch",
+  "yeastDry": "Trocken",
+  "yeastFullFresh": "Frischhefe",
+  "yeastFullDry": "Trockenhefe",
+  "salt": "Salz",
+  "oil": "Öl",
+  "doughBall": "Teigling",
+
+  "rectangular": "Rechteckig",
+  "circular": "Rund",
+
+  "newPan": "Neues Blech",
+  "widthCm": "Breite (cm)",
+  "heightCm": "Höhe (cm)",
+  "diameterCm": "Durchmesser (cm)",
+  "addPan": "Blech hinzufügen",
+  "resetPans": "Bleche zurücksetzen",
+  "removePan": "Blech entfernen",
+  "removePanConfirm": "Blech {description} entfernen?",
+  "@removePanConfirm": {
+    "placeholders": {
+      "description": { "type": "String" }
+    }
+  },
+
+  "add": "Hinzufügen",
+  "cancel": "Abbrechen",
+  "save": "Speichern",
+  "delete": "Löschen",
+  "edit": "Bearbeiten",
+  "remove": "Entfernen",
+
+  "longPressToRestore": "Lange drücken zum Zurücksetzen",
+
+  "savedPresets": "Gespeicherte Presets",
+  "saved": "Gespeichert",
+  "saveCurrentParams": "Aktuelle Parameter speichern",
+  "presetName": "Name",
+  "presetNotes": "Notizen (optional)",
+  "presetSaved": "Preset gespeichert",
+  "editPreset": "Preset bearbeiten",
+  "deletePreset": "Preset löschen",
+  "deletePresetConfirm": "\"{name}\" löschen?",
+  "@deletePresetConfirm": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "presetDeleted": "\"{name}\" gelöscht",
+  "@presetDeleted": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "noPresets": "Keine gespeicherten Presets",
+  "noPresetsHint": "Tippe auf das Speichern-Symbol um\ndie aktuellen Parameter zu speichern",
+
+  "takePhoto": "Foto aufnehmen",
+  "pickFromGallery": "Aus Galerie wählen",
+
+  "dbError": "DB-Fehler: {error}",
+  "@dbError": {
+    "placeholders": {
+      "error": { "type": "String" }
+    }
+  }
+}

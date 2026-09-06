@@ -1,0 +1,76 @@
+{
+  "@@locale": "es",
+
+  "appTitle": "Impasta",
+
+  "ingredients": "Ingredientes",
+  "flour": "Harina",
+  "water": "Agua",
+  "yeast": "Levadura",
+  "yeastFresh": "Fresca",
+  "yeastDry": "Seca",
+  "yeastFullFresh": "Levadura Fresca",
+  "yeastFullDry": "Levadura Seca",
+  "salt": "Sal",
+  "oil": "Aceite",
+  "doughBall": "Bollo",
+
+  "rectangular": "Rectangular",
+  "circular": "Redonda",
+
+  "newPan": "Nueva bandeja",
+  "widthCm": "Ancho (cm)",
+  "heightCm": "Alto (cm)",
+  "diameterCm": "Diámetro (cm)",
+  "addPan": "Añadir bandeja",
+  "resetPans": "Restaurar bandejas por defecto",
+  "removePan": "Quitar bandeja",
+  "removePanConfirm": "¿Quitar la bandeja {description}?",
+  "@removePanConfirm": {
+    "placeholders": {
+      "description": { "type": "String" }
+    }
+  },
+
+  "add": "Añadir",
+  "cancel": "Cancelar",
+  "save": "Guardar",
+  "delete": "Eliminar",
+  "edit": "Editar",
+  "remove": "Quitar",
+
+  "longPressToRestore": "Mantén pulsado para restaurar",
+
+  "savedPresets": "Presets guardados",
+  "saved": "Guardados",
+  "saveCurrentParams": "Guardar parámetros actuales",
+  "presetName": "Nombre",
+  "presetNotes": "Notas (opcional)",
+  "presetSaved": "Preset guardado",
+  "editPreset": "Editar preset",
+  "deletePreset": "Eliminar preset",
+  "deletePresetConfirm": "¿Eliminar \"{name}\"?",
+  "@deletePresetConfirm": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "presetDeleted": "\"{name}\" eliminado",
+  "@presetDeleted": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "noPresets": "No hay presets guardados",
+  "noPresetsHint": "Pulsa el icono guardar para guardar\nlos parámetros actuales",
+
+  "takePhoto": "Tomar foto",
+  "pickFromGallery": "Elegir de la galería",
+
+  "dbError": "Error DB: {error}",
+  "@dbError": {
+    "placeholders": {
+      "error": { "type": "String" }
+    }
+  }
+}
